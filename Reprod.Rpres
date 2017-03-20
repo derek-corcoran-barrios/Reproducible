@@ -1,0 +1,60 @@
+
+
+Investigación reproducible, un ejemplo en Plumas National Forest
+========================================================
+author: Derek Corcoran
+date: 20 de marzo 2017
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE,results='hide'}
+library("raster")
+library("rasterVis")
+library("maps")
+library("maptools")
+library("rgdal")
+library("latticeExtra")
+library("dplyr")
+library("knitr")
+library("lubridate")
+library("ggmap")
+library("ggplot2")
+library(sp)
+```
+  
+  First Slide
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+
+```{r, cache=TRUE, echo=FALSE, include=FALSE}
+RESULTS2016 <- read.csv("~/Documents/new_bats/Rnew_bats/RESULTS2016.csv")
+RESULTS2016 <- RESULTS2016[,1:4]
+RESULTS2016$START.DATE <- dmy(RESULTS2016$START.DATE)
+RESULTS2016$YEAR<- as.factor(as.character(year(RESULTS2016$START.DATE)))
+RESULTS2016$LONG <- as.numeric(as.character(RESULTS2016$LONG))
+RESULTS2016$LAT <- as.numeric(as.character(RESULTS2016$LAT))
+
+plumas <- get_map(location = "Quincy, ca", zoom = 9)
+Plumap<- ggmap(plumas)+ scale_x_continuous(limits = c(-121.6945, -120.0407), expand = c(0, 0)) + scale_y_continuous(limits = c(39.36708, 40.31977), expand = c(0, 0))
+```
+
+```{r, echo=FALSE}
+Plumap + geom_point(aes(x = LONG, y = LAT, colour=YEAR, label=ID), data = RESULTS2016, size = 3, alpha = 0.5)+ scale_colour_manual(name="",  values =c("yellow", "red"))
+
+
+```
+
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```

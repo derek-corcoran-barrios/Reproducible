@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/260315/0b3c412817204531a02d09297addf1ce
+bundleId: https://api.rpubs.com/api/v1/document/260315/0b3c412817204531a02d09297addf1ce
+url: http://rpubs.com/derek_corcoran/260315
+when: 1490033070.4534

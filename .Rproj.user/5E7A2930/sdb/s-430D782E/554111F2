@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\nInvestigación reproducible, un ejemplo en Plumas National Forest\n========================================================\nauthor: Derek Corcoran\ndate: 20 de marzo 2017\n\n```{r, message=FALSE, warning=FALSE, echo=FALSE,results='hide'}\nlibrary(\"raster\")\nlibrary(\"rasterVis\")\nlibrary(\"maps\")\nlibrary(\"maptools\")\nlibrary(\"rgdal\")\nlibrary(\"latticeExtra\")\nlibrary(\"dplyr\")\nlibrary(\"knitr\")\nlibrary(\"lubridate\")\nlibrary(\"ggmap\")\nlibrary(\"ggplot2\")\nlibrary(sp)\n```\n  \n  First Slide\n========================================================\n\nFor more details on authoring R presentations click the\n**Help** button on the toolbar.\n\n- Bullet 1\n- Bullet 2\n- Bullet 3\n\nSlide With Code\n========================================================\n\n```{r, cache=TRUE, echo=FALSE, include=FALSE}\nRESULTS2016 <- read.csv(\"~/Documents/new_bats/Rnew_bats/RESULTS2016.csv\")\nRESULTS2016 <- RESULTS2016[,1:4]\nRESULTS2016$START.DATE <- dmy(RESULTS2016$START.DATE)\nRESULTS2016$YEAR<- as.factor(as.character(year(RESULTS2016$START.DATE)))\nRESULTS2016$LONG <- as.numeric(as.character(RESULTS2016$LONG))\nRESULTS2016$LAT <- as.numeric(as.character(RESULTS2016$LAT))\n\nplumas <- get_map(location = \"Quincy, ca\", zoom = 9)\nPlumap<- ggmap(plumas)+ scale_x_continuous(limits = c(-121.6945, -120.0407), expand = c(0, 0)) + scale_y_continuous(limits = c(39.36708, 40.31977), expand = c(0, 0))\n```\n\n```{r, echo=FALSE}\nPlumap + geom_point(aes(x = LONG, y = LAT, colour=YEAR, label=ID), data = RESULTS2016, size = 3, alpha = 0.5)+ scale_colour_manual(name=\"\",  values =c(\"yellow\", \"red\"))\n\n\n```\n\n\nSlide With Plot\n========================================================\n\n```{r, echo=FALSE}\nplot(cars)\n```\n",
+    "created" : 1490017974368.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "512453994",
+    "id" : "554111F2",
+    "lastKnownWriteTime" : 1490021345,
+    "path" : "~/Documents/Reproducible_research/Reprod.Rpres",
+    "project_path" : "Reprod.Rpres",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_presentation"
+}
